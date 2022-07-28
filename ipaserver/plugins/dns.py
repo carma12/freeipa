@@ -2779,13 +2779,8 @@ class dnszone_add(DNSZoneBase_add):
                     additional_info=u"Value will be ignored.")
             )
         if 'idnssoaserial' in options:
-            messages.add_message(
-                options['version'],
-                result,
-                messages.OptionDeprecatedWarning(
-                    option='idnssoaserial',
-                    additional_info=u"Value will be ignored.")
-            )
+            logger.warning("'idnssoaserial' is deprecated on this version (%s). "
+                           "Value will be ignored.", options['version'])
 
     def pre_callback(self, ldap, dn, entry_attrs, attrs_list, *keys, **options):
         assert isinstance(dn, DN)
